@@ -86,6 +86,11 @@ Suhas Gundimeda, CH12B026
 15th November 2015
 \end_layout
 
+\begin_layout Paragraph
+Note on running the MATLAB files: each of fmincon and quadprog have their
+ own sets of files, run separately.
+\end_layout
+
 \begin_layout Section
 Basic model
 \end_layout
@@ -106,8 +111,80 @@ Without minimizing U
 Same objective function: 0.625
 \end_layout
 
+\begin_layout Subsubsection
+Different output contorlled variables
+\end_layout
+
+\begin_layout Subsubsection
+Effect of x0, control horizon, prediction horizon
+\end_layout
+
 \begin_layout Subsection
 quadprog
+\end_layout
+
+\begin_layout Subsubsection
+Different output contorlled variables
+\end_layout
+
+\begin_layout Subsubsection
+Effect of x0, control horizon, prediction horizon
+\end_layout
+
+\begin_layout Section
+Model with disturbance
+\end_layout
+
+\begin_layout Subsection
+fmincon
+\end_layout
+
+\begin_layout Subsubsection
+Different output contorlled variables
+\end_layout
+
+\begin_layout Subsubsection
+Effect of x0, control horizon, prediction horizon
+\end_layout
+
+\begin_layout Subsection
+quadprog
+\end_layout
+
+\begin_layout Subsubsection
+Different output contorlled variables
+\end_layout
+
+\begin_layout Subsubsection
+Effect of x0, control horizon, prediction horizon
+\end_layout
+
+\begin_layout Section
+Model with bias
+\end_layout
+
+\begin_layout Subsection
+fmincon
+\end_layout
+
+\begin_layout Subsubsection
+Different output contorlled variables
+\end_layout
+
+\begin_layout Subsubsection
+Effect of x0, control horizon, prediction horizon
+\end_layout
+
+\begin_layout Subsection
+quadprog
+\end_layout
+
+\begin_layout Subsubsection
+Different output contorlled variables
+\end_layout
+
+\begin_layout Subsubsection
+Effect of x0, control horizon, prediction horizon
 \end_layout
 
 \begin_layout Bibliography
@@ -143,6 +220,19 @@ key "key-3"
 \end_inset
 
 http://www.controlglobal.com/assets/Media/0609/article_167_fig1.jpg
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+Balchen, Jens G., Dag Ljungquist, and Stig Strand.
+ "State—space predictive control." Chemical Engineering Science 47.4 (1992):
+ 787-807.
+ 
 \end_layout
 
 \end_body
