@@ -99,6 +99,11 @@ Basic model
 fmincon
 \end_layout
 
+\begin_layout Standard
+All configuration is done in the objective function.
+ The caller provides just the seed U values.
+\end_layout
+
 \begin_layout Subsubsection
 Without minimizing U
 \begin_inset Formula $^{2}$

@@ -10,7 +10,7 @@ D = 0;
 [~,Nstates] = size(A);
 [~,Ninputs] = size(B);
 Ysp = [-0.1 0.05 -0.4 0.6 -0.4]'; %For all k>0
-X0 = [0 0 0 0 0]'; %Starting states
+X0 = zeros(Nstates,1); %Starting states
 weightX = ones(Nstates,Nstates,predictionHor); %phiX, weighting matrix for X, until predictionHor
 weightU = ones(Ninputs*controlHor,Ninputs*controlHor); %phiU, weighting matrix for U
 
