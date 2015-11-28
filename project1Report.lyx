@@ -83,12 +83,12 @@ Suhas Gundimeda, CH12B026
 \end_layout
 
 \begin_layout Date
-15th November 2015
+27th November 2015
 \end_layout
 
 \begin_layout Paragraph
-Note on running the MATLAB files: the masterMPC.m file contains all the possible
- confuguration options, including all the questions asked.
+Note on running the MATLAB files: the config.m file contains all the possible
+ configuration options, including all the questions asked.
  This sets the conditions and calls the appropriate files.
 \end_layout
 
@@ -101,7 +101,7 @@ fmincon
 \end_layout
 
 \begin_layout Standard
-The optimization problem typically takes 1.3 to 2.0 seconds to complete.
+The optimization problem typically takes order of 1 second to complete.
 \end_layout
 
 \begin_layout Subsubsection
@@ -121,11 +121,214 @@ Different output controlled variables
 \end_layout
 
 \begin_layout Standard
-TODO State 1 needs large moves to control with the A, B matrices given.
+State 1 needs large moves to control with the A, B matrices given.
 \end_layout
 
 \begin_layout Standard
 State 2 needs large moves to control using the second input alone.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state15.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PH=11, CH=7, weights = I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state45h2-10.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+States 4-5.
+ PH=10, CH=2, weightX is 10000 times higher than wrightU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state45h2-10Moves.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Control moves for states 4-5.
+ PH=10, CH=2, weightX is 10000 times higher than wrightU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state45h5-5.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+States 4-5.
+ PH=5, CH=5, weightX is 10000 times higher than wrightU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state45h5-5Moves.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Control moves for states 4-5.
+ PH=5, CH=5, weightX is 10000 times higher than wrightU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state45h55 0 weight on U.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+States 4-5.
+ PH=5, CH=5, weightU=0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename run/state45h55Moves 0weight on U.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Control moves for states 4-5.
+ PH=5, CH=5, weightU=0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -224,8 +427,37 @@ quadprog
 Different output controlled variables
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Section
 Effect of x0, control horizon, prediction horizon
+\end_layout
+
+\begin_layout Enumerate
+x0 in general does not affect things too much, acts like more distance to
+ the set points, more initial bias.
+\end_layout
+
+\begin_layout Enumerate
+As the control horizon(CH) shrinks the control moves become more in magnitude
+ and more jagged.
+ This nearly always helps achieve set point control faster, but regulatory
+ control once it's there is more difficult, causing oscillations.
+\end_layout
+
+\begin_layout Enumerate
+Increase in control horizon and CH/PH ratio increases time to set point
+ and decreases amplitude and frequency of regulatory oscillations.
+\end_layout
+
+\begin_layout Enumerate
+Decrease in prediction horizon(PH) makes it more likely that the states
+ settle down with bias.
+ Decreases regulatory oscillation amplitude and frequency.
+\end_layout
+
+\begin_layout Enumerate
+Increase in PH with same CH/PH ratio makes it more likely that the states
+ reach reference.
+ It also decreases amplitude and frequency of regulatory oscillations.
 \end_layout
 
 \begin_layout Bibliography

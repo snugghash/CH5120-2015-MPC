@@ -5,7 +5,7 @@ function twoNorm = objFmincon(U)
 %   of Xs as analytical functions of Us. That is done project1QP.m.
 
 %% Preparation
-load('configMPC.mat');
+load('run/configMPC.mat');
 % Padding U to make it big enough until predictionHor
 for i=1:diffHor+1
     U = [U U(:,controlHor)];

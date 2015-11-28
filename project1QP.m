@@ -1,21 +1,5 @@
-%% Model, horizons, weights, initial states, reference trajectory.
-predictionHor = 11; %Prediction Horizon
-controlHor = 7; %Control Horizon
-diffHor = predictionHor - controlHor;
-A = eye(5); %Placeholders, in case linssmodel.mat dosen't work out
-B = ones(5,2);
-load('linssmodel.mat'); %Get A,B
-C = eye(5);
-D = 0;
-[~,Nstates] = size(A);
-[~,Ninputs] = size(B);
-Ysp = [-0.1 0.05 -0.4 0.6 -0.4]'; %For all k>0
-X0 = zeros(Nstates,1); %Starting states
-weightX = ones(Nstates,Nstates,predictionHor); %phiX, weighting matrix for X, until predictionHor
-weightU = ones(Ninputs*controlHor,Ninputs*controlHor); %phiU, weighting matrix for U
-
-timeStart = 0;
-timeEnd = 400;
+%% Preparation
+load('run/configMPC.mat');
 
 %% Simple
 % Computing H,f

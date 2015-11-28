@@ -1,15 +1,16 @@
 %% Preparation
-load('configMPC.mat');
+load('run/configMPC.mat');
+
 
 Uhat = U0;
 Xcurrent = X0;
 Ximplemented = X0;
 uImplemented = [];
 for time = timeStart:timeEnd
-    save('configMPC.mat','Xcurrent','-append');
+    save('run/configMPC.mat','Xcurrent','-append'); % Saving the current state for the optimizer to use as X0
     tic
-    [Uhat, twoNorm, exitFlag] = fminunc(@objFmincon, Uhat, optimoptions('fminunc','TolFun',1e-3,'TolX',1e-3));
-    toc
+    [Uhat, twoNorm, exitFlag] = fminunc(@objFmincon, Uhat, optimoptions('fminunc','TolFun',1e-3,'TolX',1e-3)); %10^-3 tolerance
+    toc %Displays amount of time taken
     % Do stuff with Uhat.
     uImplemented = [uImplemented Uhat(:,1)];
     % Seed next time with the old Uhat
@@ -19,15 +20,4 @@ for time = timeStart:timeEnd
     Ximplemented = [Ximplemented Xcurrent];
 end
 
-figure(1)
-hold on
-plot(Ximplemented(4,:),'m-')
-plot(Ximplemented(5,:),'g-')
-plot(referenceTrajectory(4,:),'mo')
-plot(referenceTrajectory(5,:),'go')
-plot(uImplemented(1,:),'b--')
-plot(uImplemented(2,:),'r--')
-title('States 4 and 5 going to reference')
-xlabel('Time')
-ylabel('Output')
-legend('State 4', 'State 5', 'Reference 4', 'Reference 5','Input 1','Input 2');
+save(strcat('run/mpcResultS', int2str(state1),int2str(state2),'h',int2str(controlHor),int2str(predictionHor),'.mat'));
