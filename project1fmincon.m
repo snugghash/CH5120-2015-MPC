@@ -20,4 +20,4 @@ for time = timeStart:timeEnd
     Ximplemented = [Ximplemented Xcurrent];
 end
 
-save(strcat('run/mpcResultS', int2str(state1),int2str(state2),'h',int2str(controlHor),int2str(predictionHor),'.mat'));
+save(strcat('run/mpcResultS', int2str(state1),int2str(state2),'h',int2str(controlHor),int2str(predictionHor),'ScaleX',scaleX,'.mat'));

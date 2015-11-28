@@ -40,7 +40,8 @@ referenceTrajectory = [referenceTrajectory repmat(Ysp,[1 timeEnd-rampEnd-timeSta
 end
 state1 = 4;
 state2 = 5;
-weightX = (100).*repmat([
+scaleX = 100;
+weightX = scaleX.*repmat([
         0 0 0 0 0;
         0 0 0 0 0;
         0 0 0 0 0;
@@ -55,8 +56,8 @@ weightX = (100).*repmat([
 %% Choose method of solution
 method = 'fmincon';
 if(strcmp(method,'fmincon'))
-    
-    weightU = 1.*repmat([
+    scaleU = 1;
+    weightU = scaleU.*repmat([
         1 0;
         0 1;
                     ],[1 1 controlHor]);
@@ -75,7 +76,7 @@ else
 end
 
 % Load results (Sxy stands for controlling states x,y. hxy stands for CH=x and PH=y)
-load(strcat('run/mpcResultS', int2str(state1),int2str(state2),'h',int2str(controlHor),int2str(predictionHor),'.mat'));
+load(strcat('run/mpcResultS', int2str(state1),int2str(state2),'h',int2str(controlHor),int2str(predictionHor),'ScaleX',scaleX,'.mat'));
 
 % Plot reference vs. implemented states
 refs = figure;
@@ -90,7 +91,7 @@ ylabel('Output')
 legend(strcat('State ',int2str(state1)), strcat('State ',int2str(state2)), strcat('Reference ',int2str(state1)), strcat('Reference ',int2str(state2)));
 hold off
 %Write the plot to disk
-print(strcat('run/mpcResultS', int2str(state1),int2str(state2),'H',int2str(controlHor),'-',int2str(predictionHor)),'-dpng');
+print(strcat('run/mpcResultS', int2str(state1),int2str(state2),'H',int2str(controlHor),'-',int2str(predictionHor),'ScaleX',scaleX),'-dpng');
 
 % Plot the control moves
 moves = figure;
@@ -103,4 +104,4 @@ ylabel('Control moves')
 legend('Input 1','Input 2');
 hold off
 %Write the plot to disk
-print(strcat('run/mpcResultS', int2str(state1),int2str(state2),'H',int2str(controlHor),'-',int2str(predictionHor),' Moves'),'-dpng');
+print(strcat('run/mpcResultS', int2str(state1),int2str(state2),'H',int2str(controlHor),'-',int2str(predictionHor),'ScaleX',scaleX,' Moves'),'-dpng');
